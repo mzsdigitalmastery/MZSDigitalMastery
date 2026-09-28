@@ -1,0 +1,6 @@
+{
+  "name": "MZS Digital Mastery",
+  "description": "Digital Resources & Tools Hub. Explore, learn, and master digital skills, modern tools, creative assets, practical knowledge, and curated digital products.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

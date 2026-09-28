@@ -1,0 +1,279 @@
+{
+  "entities": {
+    "Resource": {
+      "title": "Resource",
+      "description": "Represents an educational or digital asset, tool, tutorial, or course in the ecosystem.",
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "description": "Title of the resource",
+          "minLength": 2,
+          "maxLength": 200
+        },
+        "slug": {
+          "type": "string",
+          "description": "URL-friendly slug identifier",
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+        },
+        "shortDescription": {
+          "type": "string",
+          "description": "Concise summary for previews and cards",
+          "maxLength": 300
+        },
+        "longDescription": {
+          "type": "string",
+          "description": "Detailed description and curriculum or overview"
+        },
+        "thumbnail": {
+          "type": "string",
+          "description": "Preview image URL or icon asset"
+        },
+        "category": {
+          "type": "string",
+          "description": "Primary ecosystem category"
+        },
+        "subcategory": {
+          "type": "string",
+          "description": "Subcategory or domain focus"
+        },
+        "resourceType": {
+          "type": "string",
+          "description": "Type of resource such as Course, Tool, AI Tool, Template, Graphic, Video, eBook, Digital Product",
+          "enum": [
+            "Course",
+            "Tutorial",
+            "Template",
+            "Graphic",
+            "Video",
+            "Software",
+            "Tool",
+            "AI Tool",
+            "AI Prompt",
+            "AI Workflow",
+            "eBook",
+            "Guide",
+            "Cheat Sheet",
+            "Roadmap",
+            "Bundle",
+            "Digital Product",
+            "Other"
+          ]
+        },
+        "tags": {
+          "type": "array",
+          "description": "Keywords and search tags"
+        },
+        "language": {
+          "type": "string",
+          "description": "Content language"
+        },
+        "skillLevel": {
+          "type": "string",
+          "description": "Difficulty level",
+          "enum": ["Beginner", "Intermediate", "Advanced", "All Levels"]
+        },
+        "format": {
+          "type": "string",
+          "description": "Format such as Web App, Video, PDF, PSD, Figma, Code, ZIP"
+        },
+        "fileSize": {
+          "type": "string",
+          "description": "Estimated file size or duration"
+        },
+        "platform": {
+          "type": "string",
+          "description": "Target platform (Web, Windows, macOS, Cross-platform, Cloud)"
+        },
+        "externalUrl": {
+          "type": "string",
+          "description": "Official link or resource destination"
+        },
+        "accessType": {
+          "type": "string",
+          "description": "Access model",
+          "enum": ["Free", "Freemium", "Open Source", "Premium", "Official"]
+        },
+        "isFree": {
+          "type": "boolean",
+          "description": "Whether the resource is free to access"
+        },
+        "isPremium": {
+          "type": "boolean",
+          "description": "Whether the resource is a premium store asset"
+        },
+        "isFeatured": {
+          "type": "boolean",
+          "description": "Whether resource is highlighted on the homepage"
+        },
+        "status": {
+          "type": "string",
+          "description": "Publication workflow status",
+          "enum": ["draft", "review", "ready", "published", "updated", "archived"]
+        },
+        "author": {
+          "type": "string",
+          "description": "Creator or maintainer"
+        },
+        "publisher": {
+          "type": "string",
+          "description": "Publishing organization or brand"
+        },
+        "license": {
+          "type": "string",
+          "description": "Usage license"
+        },
+        "usageNotes": {
+          "type": "string",
+          "description": "Guidelines for usage, installation, or terms"
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Creation timestamp"
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "Last update timestamp"
+        }
+      },
+      "required": ["title", "slug", "shortDescription", "category", "resourceType", "status"]
+    },
+    "ResourceRequest": {
+      "title": "ResourceRequest",
+      "description": "Resource request submitted by a user for curation",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name of the requester",
+          "minLength": 2,
+          "maxLength": 100
+        },
+        "email": {
+          "type": "string",
+          "description": "Contact email of requester"
+        },
+        "resourceType": {
+          "type": "string",
+          "description": "Category or type of requested resource"
+        },
+        "resourceName": {
+          "type": "string",
+          "description": "Name or topic of requested resource",
+          "minLength": 2,
+          "maxLength": 200
+        },
+        "description": {
+          "type": "string",
+          "description": "Description of why and what is needed",
+          "maxLength": 1000
+        },
+        "preferredFormat": {
+          "type": "string",
+          "description": "Preferred format or medium"
+        },
+        "referenceLink": {
+          "type": "string",
+          "description": "Reference link or official link"
+        },
+        "additionalNotes": {
+          "type": "string",
+          "description": "Any additional context"
+        },
+        "status": {
+          "type": "string",
+          "description": "Processing status (pending, in-review, fulfilled, rejected)",
+          "enum": ["pending", "in-review", "fulfilled", "declined"]
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Submission timestamp"
+        }
+      },
+      "required": ["name", "email", "resourceType", "resourceName", "description", "status"]
+    },
+    "Category": {
+      "title": "Category",
+      "description": "Ecosystem categorization taxonomy",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Category name"
+        },
+        "slug": {
+          "type": "string",
+          "description": "URL slug"
+        },
+        "description": {
+          "type": "string",
+          "description": "Category summary"
+        },
+        "icon": {
+          "type": "string",
+          "description": "Lucide icon identifier"
+        },
+        "order": {
+          "type": "number",
+          "description": "Display order"
+        }
+      },
+      "required": ["name", "slug", "description", "icon", "order"]
+    },
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "User profile with role-based access attributes",
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "description": "User email address"
+        },
+        "displayName": {
+          "type": "string",
+          "description": "User display name"
+        },
+        "role": {
+          "type": "string",
+          "description": "User access role",
+          "enum": ["admin", "editor", "moderator", "user"]
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Account registration timestamp"
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "Last activity or profile update timestamp"
+        }
+      },
+      "required": ["email", "role"]
+    }
+  },
+  "firestore": {
+    "/resources/{resourceId}": {
+      "schema": {
+        "$ref": "#/entities/Resource"
+      },
+      "description": "Collection of all curated digital mastery resources, tools, courses, and templates."
+    },
+    "/resource_requests/{requestId}": {
+      "schema": {
+        "$ref": "#/entities/ResourceRequest"
+      },
+      "description": "User requests for new tools, courses, assets, and workflows."
+    },
+    "/categories/{categoryId}": {
+      "schema": {
+        "$ref": "#/entities/Category"
+      },
+      "description": "Primary taxonomy categories for navigation and filtering."
+    },
+    "/users/{userId}": {
+      "schema": {
+        "$ref": "#/entities/UserProfile"
+      },
+      "description": "User profile documents keyed by Firebase Auth UID."
+    }
+  }
+}
